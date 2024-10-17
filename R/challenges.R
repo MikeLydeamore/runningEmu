@@ -56,31 +56,11 @@ deux <- function(vec) {
 #' @return A single numerical vector with counts of each unique element
 #'
 #' @export
-trois <- function(vec) {
-  table(vec)
-}
-
-
 #' @import data.table
-trois_test <- function(vec) {
+trois <- function(vec) {
   a <- as.data.table(vec)[, .N, by=vec]
   retvec <- a[, N]
   names(retvec) <- a[, vec]
 
   retvec
-}
-
-trois_test2 <- function(vec) {
-  counts <- c()
-  while (length(vec) > 0) {
-    check <- vec[1]
-    pulls <- which(vec == vec[1])
-
-    counts <- c(counts, length(pulls))
-    names(counts)[length(counts)] <- vec[1]
-
-    vec <- vec[-pulls]
-  }
-
-  return (counts[order(as.numeric(names(counts)))])
 }
