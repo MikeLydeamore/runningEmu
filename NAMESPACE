@@ -3,3 +3,4 @@
 export(deux)
 export(trois)
 export(un)
+import(data.table)
